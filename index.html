@@ -19,8 +19,10 @@ body{overflow-x:hidden}
 .stage{
     position:relative;
     width:min(100vw,56.25vh);
-    min-height:2200px;
+    min-height:100vh;
     margin:0 auto;
+    padding-bottom:50px;
+
     background-color:rgb(176,176,176);
     background-image:url("./background002.png");
     background-size:100% auto;
@@ -29,11 +31,10 @@ body{overflow-x:hidden}
 }
 
 .links{
-    position:absolute;
-    left:50%;
-    top:270px;
-    transform:translateX(-50%);
     width:82%;
+    margin:0 auto;
+    padding-top:350px;
+
     display:flex;
     flex-direction:column;
     gap:18px;
@@ -146,14 +147,19 @@ body{overflow-x:hidden}
 }
 
 .legal-footer{
-    width:min(88vw,520px);
-    margin:34px auto 70px auto;
+    margin:24px auto 0 auto;
     display:flex;
     justify-content:center;
-    gap:16px;
+    gap:14px;
     flex-wrap:wrap;
     color:rgba(255,255,255,.75);
     font-size:14px;
+}
+
+.legal-footer span{
+    width:100%;
+    text-align:center;
+    color:rgba(255,255,255,.66);
 }
 
 .legal-footer button{
@@ -163,12 +169,6 @@ body{overflow-x:hidden}
     cursor:pointer;
     text-decoration:underline;
     font-size:14px;
-}
-
-.legal-footer span{
-    width:100%;
-    text-align:center;
-    color:rgba(255,255,255,.66);
 }
 
 .modal{
@@ -218,12 +218,12 @@ body{overflow-x:hidden}
 @media(max-width:768px){
     .stage{
         width:100vw;
-        min-height:1720px;
+        padding-bottom:36px;
     }
 
     .links{
-        top:250px;
         width:88%;
+        padding-top:270px;
         gap:12px;
     }
 
@@ -261,7 +261,7 @@ body{overflow-x:hidden}
     .menu{font-size:22px}
 
     .legal-footer{
-        margin:24px auto 50px auto;
+        margin-top:18px;
         font-size:12px;
         gap:10px;
     }
@@ -326,15 +326,15 @@ body{overflow-x:hidden}
         <div class="label">Eurobricks</div><div class="menu">⋮</div>
     </a>
 
-</div>
-</div>
+    <footer class="legal-footer">
+        <span>© 2026 Sebastian Chara / Charavision</span>
+        <button onclick="openModal('impressumModal')">Impressum</button>
+        <button onclick="openModal('privacyModal')">Datenschutz</button>
+        <button onclick="openModal('copyrightModal')">Copyright</button>
+    </footer>
 
-<footer class="legal-footer">
-    <span>© 2026 Sebastian Chara / Charavision</span>
-    <button onclick="openModal('impressumModal')">Impressum</button>
-    <button onclick="openModal('privacyModal')">Datenschutz</button>
-    <button onclick="openModal('copyrightModal')">Copyright</button>
-</footer>
+</div>
+</div>
 
 <div id="impressumModal" class="modal">
     <div class="modal-box">
@@ -355,43 +355,17 @@ body{overflow-x:hidden}
 <div id="privacyModal" class="modal">
     <div class="modal-box">
         <h2>Datenschutzhinweis</h2>
-
-        <p>
-            Verantwortlicher für diese Website ist Sebastian Chara, Schwalbenstraße 57,
-            22305 Hamburg, Germany. Kontakt: charavisionj5@gmail.com.
-        </p>
-
+        <p>Verantwortlicher für diese Website ist Sebastian Chara, Schwalbenstraße 57, 22305 Hamburg, Germany. Kontakt: charavisionj5@gmail.com.</p>
         <h3>Hosting</h3>
-        <p>
-            Diese Website wird über GitHub Pages bereitgestellt. Beim Aufruf der Website
-            können technisch notwendige Verbindungsdaten wie IP-Adresse, Datum, Uhrzeit,
-            Browserinformationen und aufgerufene Dateien verarbeitet werden.
-        </p>
-
+        <p>Diese Website wird über GitHub Pages bereitgestellt. Beim Aufruf der Website können technisch notwendige Verbindungsdaten wie IP-Adresse, Datum, Uhrzeit, Browserinformationen und aufgerufene Dateien verarbeitet werden.</p>
         <h3>3D-Viewer</h3>
-        <p>
-            Auf dieser Seite ist ein 3D-Viewer eingebunden. Beim Laden des Viewers können
-            technische Ressourcen von GitHub Pages und verwendeten CDN-Diensten geladen werden.
-        </p>
-
+        <p>Auf dieser Seite ist ein 3D-Viewer eingebunden. Beim Laden des Viewers können technische Ressourcen von GitHub Pages und verwendeten CDN-Diensten geladen werden.</p>
         <h3>Externe Links</h3>
-        <p>
-            Diese Website enthält Links zu externen Plattformen wie Instagram, TikTok,
-            Reddit, YouTube, Flickr, 1000Steine, Doctor Brick und Eurobricks. Beim Anklicken
-            dieser Links gelten die Datenschutzbestimmungen der jeweiligen Anbieter.
-        </p>
-
+        <p>Diese Website enthält Links zu externen Plattformen wie Instagram, TikTok, Reddit, YouTube, Flickr, 1000Steine, Doctor Brick und Eurobricks. Beim Anklicken dieser Links gelten die Datenschutzbestimmungen der jeweiligen Anbieter.</p>
         <h3>Keine Kontaktformulare</h3>
-        <p>
-            Diese Website verwendet kein eigenes Kontaktformular und keine eigene Nutzerregistrierung.
-        </p>
-
+        <p>Diese Website verwendet kein eigenes Kontaktformular und keine eigene Nutzerregistrierung.</p>
         <h3>Rechte betroffener Personen</h3>
-        <p>
-            Du hast nach der DSGVO insbesondere Rechte auf Auskunft, Berichtigung, Löschung,
-            Einschränkung der Verarbeitung, Datenübertragbarkeit und Widerspruch.
-        </p>
-
+        <p>Du hast nach der DSGVO insbesondere Rechte auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung, Datenübertragbarkeit und Widerspruch.</p>
         <button class="close-modal" onclick="closeModal('privacyModal')">Schließen</button>
     </div>
 </div>
@@ -399,24 +373,10 @@ body{overflow-x:hidden}
 <div id="copyrightModal" class="modal">
     <div class="modal-box">
         <h2>Copyright / Legal Notice</h2>
-
         <p>© 2026 Sebastian Chara / Charavision. All rights reserved.</p>
-
-        <p>
-            All images, renders, website design and 3D presentation materials on this website
-            are © Sebastian Chara / Charavision unless otherwise stated.
-        </p>
-
-        <p>
-            LEGO® is a trademark of the LEGO Group, which does not sponsor, authorize or
-            endorse this project.
-        </p>
-
-        <p>
-            J5MOC is a fan-made LEGO MOC project inspired by the character Johnny 5 from
-            the motion picture “Short Circuit”.
-        </p>
-
+        <p>All images, renders, website design and 3D presentation materials on this website are © Sebastian Chara / Charavision unless otherwise stated.</p>
+        <p>LEGO® is a trademark of the LEGO Group, which does not sponsor, authorize or endorse this project.</p>
+        <p>J5MOC is a fan-made LEGO MOC project inspired by the character Johnny 5 from the motion picture “Short Circuit”.</p>
         <button class="close-modal" onclick="closeModal('copyrightModal')">Schließen</button>
     </div>
 </div>
