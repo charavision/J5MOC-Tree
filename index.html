@@ -19,7 +19,7 @@ body{overflow-x:hidden}
 .stage{
     position:relative;
     width:min(100vw,56.25vh);
-    min-height:3600px;
+    min-height:3900px;
     margin:0 auto;
     background-color:rgb(176,176,176);
     background-image:url("./background002.png");
@@ -145,19 +145,98 @@ body{overflow-x:hidden}
     text-align:right;
 }
 
-/* HANDY */
-@media(max-width:768px){
-    .stage{
-        width:100vw;
-        min-height:3000px;
-        background-size:100% auto;
-    }
+.legal-footer{
+    position:absolute;
+    left:50%;
+    bottom:80px;
+    transform:translateX(-50%);
+    width:88%;
+    display:flex;
+    justify-content:center;
+    gap:18px;
+    flex-wrap:wrap;
+    color:rgba(255,255,255,.75);
+    font-size:15px;
+}
 
-    .links{
-        top:270px;
-        width:88%;
-        gap:12px;
-    }
+.legal-footer button{
+    background:transparent;
+    border:none;
+    color:rgba(255,255,255,.82);
+    cursor:pointer;
+    text-decoration:underline;
+    font-size:15px;
+}
+
+.legal-footer span{
+    color:rgba(255,255,255,.65);
+}
+
+.modal{
+    display:none;
+    position:fixed;
+    inset:0;
+    z-index:9999;
+    align-items:center;
+    justify-content:center;
+    padding:24px;
+    background:rgba(0,0,0,.35);
+    backdrop-filter:blur(14px);
+    -webkit-backdrop-filter:blur(14px);
+}
+
+.modal.active{
+    display:flex;
+}
+
+.modal-box{
+    width:min(92vw,720px);
+    max-height:82vh;
+    overflow:auto;
+    padding:28px;
+    border-radius:24px;
+    background:rgba(30,30,30,.72);
+    border:1px solid rgba(255,255,255,.22);
+    color:white;
+    box-shadow:0 24px 80px rgba(0,0,0,.45);
+}
+
+.modal-box h2{
+    margin-bottom:18px;
+    font-size:26px;
+}
+
+.modal-box h3{
+    margin-top:22px;
+    margin-bottom:8px;
+    font-size:18px;
+}
+
+.modal-box p{
+    margin-bottom:12px;
+    line-height:1.55;
+    color:rgba(255,255,255,.86);
+}
+
+.modal-box a{
+    color:white;
+}
+
+.close-modal{
+    margin-top:20px;
+    width:100%;
+    padding:14px;
+    border-radius:16px;
+    border:1px solid rgba(255,255,255,.25);
+    background:rgba(255,255,255,.16);
+    color:white;
+    font-weight:700;
+    cursor:pointer;
+}
+
+@media(max-width:768px){
+    .stage{width:100vw;min-height:3600px}
+    .links{top:270px;width:88%;gap:12px}
 
     .viewer-box{
         width:86%;
@@ -171,9 +250,7 @@ body{overflow-x:hidden}
         gap:10px;
     }
 
-    .icon-link{
-        border-radius:18px;
-    }
+    .icon-link{border-radius:18px}
 
     .link{
         width:86%;
@@ -192,12 +269,17 @@ body{overflow-x:hidden}
 
     .thumb svg{width:34px;height:34px}
 
-    .label{
-        font-size:20px;
+    .label{font-size:20px}
+    .menu{font-size:22px}
+
+    .legal-footer{
+        bottom:48px;
+        font-size:12px;
+        gap:10px;
     }
 
-    .menu{
-        font-size:22px;
+    .legal-footer button{
+        font-size:12px;
     }
 }
 </style>
@@ -259,7 +341,134 @@ body{overflow-x:hidden}
     </a>
 
 </div>
+
+<footer class="legal-footer">
+    <span>© 2026 Sebastian Chara / Charavision</span>
+    <button onclick="openModal('impressumModal')">Impressum</button>
+    <button onclick="openModal('privacyModal')">Datenschutz</button>
+    <button onclick="openModal('copyrightModal')">Copyright</button>
+</footer>
+
 </div>
+
+<div id="impressumModal" class="modal">
+    <div class="modal-box">
+        <h2>Impressum</h2>
+
+        <p>Angaben gemäß § 5 DDG</p>
+
+        <p>
+            Sebastian Chara<br>
+            Schwalbenstraße 57<br>
+            22305 Hamburg<br>
+            Germany
+        </p>
+
+        <p>
+            E-Mail: <a href="mailto:charavisionj5@gmail.com">charavisionj5@gmail.com</a>
+        </p>
+
+        <p>Kleinunternehmer gemäß § 19 UStG.</p>
+
+        <button class="close-modal" onclick="closeModal('impressumModal')">Schließen</button>
+    </div>
+</div>
+
+<div id="privacyModal" class="modal">
+    <div class="modal-box">
+        <h2>Datenschutzhinweis</h2>
+
+        <p>
+            Verantwortlicher für diese Website ist Sebastian Chara, Schwalbenstraße 57,
+            22305 Hamburg, Germany. Kontakt: charavisionj5@gmail.com.
+        </p>
+
+        <h3>Hosting</h3>
+        <p>
+            Diese Website wird über GitHub Pages bereitgestellt. Beim Aufruf der Website
+            können technisch notwendige Verbindungsdaten wie IP-Adresse, Datum, Uhrzeit,
+            Browserinformationen und aufgerufene Dateien verarbeitet werden.
+        </p>
+
+        <h3>3D-Viewer</h3>
+        <p>
+            Auf dieser Seite ist ein 3D-Viewer eingebunden. Beim Laden des Viewers können
+            technische Ressourcen von GitHub Pages und verwendeten CDN-Diensten geladen werden.
+        </p>
+
+        <h3>Externe Links</h3>
+        <p>
+            Diese Website enthält Links zu externen Plattformen wie Instagram, TikTok,
+            Reddit, YouTube, Flickr, 1000Steine, Doctor Brick und Eurobricks. Beim Anklicken
+            dieser Links gelten die Datenschutzbestimmungen der jeweiligen Anbieter.
+        </p>
+
+        <h3>Keine Kontaktformulare</h3>
+        <p>
+            Diese Website verwendet kein eigenes Kontaktformular und keine eigene
+            Nutzerregistrierung.
+        </p>
+
+        <h3>Rechte betroffener Personen</h3>
+        <p>
+            Du hast nach der DSGVO insbesondere Rechte auf Auskunft, Berichtigung, Löschung,
+            Einschränkung der Verarbeitung, Datenübertragbarkeit und Widerspruch.
+        </p>
+
+        <button class="close-modal" onclick="closeModal('privacyModal')">Schließen</button>
+    </div>
+</div>
+
+<div id="copyrightModal" class="modal">
+    <div class="modal-box">
+        <h2>Copyright / Legal Notice</h2>
+
+        <p>© 2026 Sebastian Chara / Charavision. All rights reserved.</p>
+
+        <p>
+            All images, renders, website design and 3D presentation materials on this website
+            are © Sebastian Chara / Charavision unless otherwise stated.
+        </p>
+
+        <p>
+            LEGO® is a trademark of the LEGO Group, which does not sponsor, authorize or
+            endorse this project.
+        </p>
+
+        <p>
+            J5MOC is a fan-made LEGO MOC project inspired by the character Johnny 5 from
+            the motion picture “Short Circuit”.
+        </p>
+
+        <button class="close-modal" onclick="closeModal('copyrightModal')">Schließen</button>
+    </div>
+</div>
+
+<script>
+function openModal(id){
+    document.getElementById(id).classList.add("active");
+}
+
+function closeModal(id){
+    document.getElementById(id).classList.remove("active");
+}
+
+document.addEventListener("keydown", function(e){
+    if(e.key === "Escape"){
+        document.querySelectorAll(".modal.active").forEach(function(modal){
+            modal.classList.remove("active");
+        });
+    }
+});
+
+document.querySelectorAll(".modal").forEach(function(modal){
+    modal.addEventListener("click", function(e){
+        if(e.target === modal){
+            modal.classList.remove("active");
+        }
+    });
+});
+</script>
 
 </body>
 </html>
