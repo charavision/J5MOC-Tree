@@ -25,16 +25,11 @@ body{
     overflow-x:hidden;
 }
 
-/* 1080 x 1920 Layout */
-
 .stage{
     position:relative;
-
     width:min(100vw,56.25vh);
     min-height:3000px;
-
     margin:0 auto;
-
     background-color:rgb(176,176,176);
     background-image:url("./background002.png");
     background-size:100% auto;
@@ -42,40 +37,26 @@ body{
     background-position:top center;
 }
 
-/* CONTENT */
-
 .links{
     position:absolute;
-
     left:50%;
     top:350px;
-
     transform:translateX(-50%);
-
     width:82%;
-
     display:flex;
     flex-direction:column;
     gap:18px;
 }
 
-/* 3D VIEWER */
-
 .viewer-box{
     width:100%;
     aspect-ratio:1/1;
-
     border-radius:22px;
-
     overflow:hidden;
-
     background:rgba(40,40,40,.35);
-
     border:1px solid rgba(255,255,255,.20);
-
     backdrop-filter:blur(18px);
     -webkit-backdrop-filter:blur(18px);
-
     box-shadow:
         0 12px 32px rgba(0,0,0,.22),
         inset 0 1px 0 rgba(255,255,255,.12);
@@ -88,34 +69,22 @@ body{
     display:block;
 }
 
-/* LINKS */
-
 .link{
     display:block;
-
     text-decoration:none;
-
     color:white;
     font-weight:700;
     font-size:28px;
-
     text-align:center;
-
     padding:22px;
-
     border-radius:22px;
-
     background:rgba(40,40,40,.35);
-
     border:1px solid rgba(255,255,255,.20);
-
     backdrop-filter:blur(18px);
     -webkit-backdrop-filter:blur(18px);
-
     box-shadow:
         0 12px 32px rgba(0,0,0,.22),
         inset 0 1px 0 rgba(255,255,255,.12);
-
     transition:.25s;
 }
 
@@ -128,8 +97,6 @@ body{
 .link:active{
     transform:translateY(0);
 }
-
-/* MOBILE */
 
 @media(max-width:768px){
     .stage{
@@ -159,7 +126,7 @@ body{
 
         <div class="viewer-box">
             <iframe
-                src="https://charavision.github.io/J5MOC-Viewer2/Viewer.html"
+                src="https://charavision.github.io/J5MOC-viewer/"
                 loading="lazy"
                 allowfullscreen>
             </iframe>
