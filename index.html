@@ -78,8 +78,7 @@ body{overflow-x:hidden}
     transition:.25s;
 }
 
-.icon-link:hover,
-.link:hover{
+.icon-link:hover,.link:hover{
     transform:translateY(-3px);
     background:rgba(30,30,30,.55);
     border-color:rgba(255,255,255,.35);
@@ -146,14 +145,60 @@ body{overflow-x:hidden}
     text-align:right;
 }
 
+/* HANDY */
 @media(max-width:768px){
-    .stage{width:100vw;min-height:3600px}
-    .links{top:350px;width:88%;gap:16px}
-    .icon-grid{gap:12px}
-    .link{grid-template-columns:58px 1fr 22px;min-height:92px;padding:14px 18px}
-    .thumb{width:52px;height:52px;border-radius:14px}
-    .label{font-size:22px}
-    .menu{font-size:24px}
+    .stage{
+        width:100vw;
+        min-height:3000px;
+        background-size:100% auto;
+    }
+
+    .links{
+        top:270px;
+        width:88%;
+        gap:12px;
+    }
+
+    .viewer-box{
+        width:86%;
+        margin:0 auto;
+        border-radius:20px;
+    }
+
+    .icon-grid{
+        width:86%;
+        margin:0 auto;
+        gap:10px;
+    }
+
+    .icon-link{
+        border-radius:18px;
+    }
+
+    .link{
+        width:86%;
+        margin:0 auto;
+        grid-template-columns:54px 1fr 20px;
+        min-height:82px;
+        padding:12px 16px;
+        border-radius:18px;
+    }
+
+    .thumb{
+        width:48px;
+        height:48px;
+        border-radius:13px;
+    }
+
+    .thumb svg{width:34px;height:34px}
+
+    .label{
+        font-size:20px;
+    }
+
+    .menu{
+        font-size:22px;
+    }
 }
 </style>
 </head>
