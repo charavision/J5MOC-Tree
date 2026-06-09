@@ -146,15 +146,14 @@ body{overflow-x:hidden}
 }
 
 .legal-footer{
-    position:absolute;
-    left:50%;
-    bottom:80px;
-    transform:translateX(-50%);
     width:88%;
+    margin:40px auto 80px auto;
+
     display:flex;
     justify-content:center;
     gap:18px;
     flex-wrap:wrap;
+
     color:rgba(255,255,255,.75);
     font-size:15px;
 }
@@ -443,7 +442,12 @@ body{overflow-x:hidden}
         <button class="close-modal" onclick="closeModal('copyrightModal')">Schließen</button>
     </div>
 </div>
-
+<footer class="legal-footer">
+    <span>© 2026 Sebastian Chara / Charavision</span>
+    <button onclick="openModal('impressumModal')">Impressum</button>
+    <button onclick="openModal('privacyModal')">Datenschutz</button>
+    <button onclick="openModal('copyrightModal')">Copyright</button>
+</footer>
 <script>
 function openModal(id){
     document.getElementById(id).classList.add("active");
