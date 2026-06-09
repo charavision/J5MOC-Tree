@@ -7,7 +7,6 @@
 <title>J5MOC</title>
 
 <style>
-
 *{
     margin:0;
     padding:0;
@@ -18,15 +17,12 @@
 html,
 body{
     width:100%;
-    height:100%;
-    overflow:hidden;
-    background:#000;
+    min-height:100%;
+    background:rgb(176,176,176);
 }
 
 body{
-    display:flex;
-    justify-content:center;
-    align-items:center;
+    overflow-x:hidden;
 }
 
 /* 1080 x 1920 Layout */
@@ -35,24 +31,24 @@ body{
     position:relative;
 
     width:min(100vw,56.25vh);
-    height:min(177.777vw,100vh);
+    min-height:2600px;
 
+    margin:0 auto;
+
+    background-color:rgb(176,176,176);
     background-image:url("./background002.png");
-    background-size:100% 100%;
+    background-size:100% auto;
     background-repeat:no-repeat;
-    background-position:center;
-
-    overflow:hidden;
+    background-position:top center;
 }
 
 /* LINKS */
 
 .links{
-
     position:absolute;
 
     left:50%;
-    top:52%;
+    top:960px;
 
     transform:translateX(-50%);
 
@@ -64,7 +60,6 @@ body{
 }
 
 .link{
-
     display:block;
 
     text-decoration:none;
@@ -94,11 +89,8 @@ body{
 }
 
 .link:hover{
-
     transform:translateY(-3px);
-
     background:rgba(30,30,30,.55);
-
     border-color:rgba(255,255,255,.35);
 }
 
@@ -109,9 +101,13 @@ body{
 /* MOBILE */
 
 @media(max-width:768px){
+    .stage{
+        width:100vw;
+        min-height:2600px;
+    }
 
     .links{
-        top:50%;
+        top:820px;
         width:84%;
         gap:16px;
     }
@@ -121,7 +117,6 @@ body{
         padding:18px;
     }
 }
-
 </style>
 </head>
 
@@ -131,33 +126,23 @@ body{
 
     <div class="links">
 
-        <a class="link"
-           href="https://reb.li/m/209065"
-           target="_blank">
+        <a class="link" href="https://reb.li/m/209065" target="_blank" rel="noopener">
            📖 Instructions
         </a>
 
-        <a class="link"
-           href="https://charavision.github.io/J5MOC-Viewer2/Viewer.html"
-           target="_blank">
+        <a class="link" href="https://charavision.github.io/J5MOC-Viewer2/Viewer.html" target="_blank" rel="noopener">
            🤖 3D Viewer
         </a>
 
-        <a class="link"
-           href="https://www.youtube.com/@charavision"
-           target="_blank">
+        <a class="link" href="https://www.youtube.com/@charavision" target="_blank" rel="noopener">
            ▶️ YouTube
         </a>
 
-        <a class="link"
-           href="https://github.com/charavision"
-           target="_blank">
+        <a class="link" href="https://github.com/charavision" target="_blank" rel="noopener">
            💻 GitHub
         </a>
 
-        <a class="link"
-           href="https://linktr.ee/j5moc"
-           target="_blank">
+        <a class="link" href="https://linktr.ee/j5moc" target="_blank" rel="noopener">
            🔗 Linktree
         </a>
 
