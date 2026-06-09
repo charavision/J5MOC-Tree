@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>J5MOC - LEGO Johnny 5 MOC | Interactive 3D Viewer</title>
+
+<meta name="description" content="J5MOC is a LEGO Johnny 5 MOC inspired by Short Circuit. Explore the interactive 3D viewer, building updates, community links and project information.">
+<meta name="keywords" content="J5MOC, LEGO Johnny 5, LEGO Johnny Five, Johnny 5 LEGO, Johnny Five LEGO, LEGO Short Circuit, LEGO robot MOC, Johnny 5 MOC, LEGO MOC, interactive 3D viewer, LEGO 3D viewer, Charavision">
+<meta name="author" content="Sebastian Chara / Charavision">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://charavision.github.io/J5MOC-Tree/">
+
+<meta property="og:title" content="J5MOC - LEGO Johnny 5 MOC">
+<meta property="og:description" content="Explore J5MOC, a fan-made LEGO Johnny 5 MOC with an interactive browser-based 3D viewer.">
+<meta property="og:image" content="https://charavision.github.io/J5MOC-Tree/background002.png">
+<meta property="og:url" content="https://charavision.github.io/J5MOC-Tree/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="J5MOC">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="J5MOC - LEGO Johnny 5 MOC">
+<meta name="twitter:description" content="Interactive browser-based 3D viewer for the fan-made LEGO Johnny 5 MOC project J5MOC.">
+<meta name="twitter:image" content="https://charavision.github.io/J5MOC-Tree/background002.png">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CreativeWork",
+  "name": "J5MOC - LEGO Johnny 5 MOC",
+  "alternateName": [
+    "LEGO Johnny 5",
+    "LEGO Johnny Five",
+    "Johnny 5 LEGO MOC",
+    "Johnny Five LEGO MOC"
+  ],
+  "description": "J5MOC is a fan-made LEGO Johnny 5 MOC inspired by Short Circuit, featuring an interactive browser-based 3D viewer.",
+  "url": "https://charavision.github.io/J5MOC-Tree/",
+  "image": "https://charavision.github.io/J5MOC-Tree/background002.png",
+  "creator": {
+    "@type": "Person",
+    "name": "Sebastian Chara"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Charavision"
+  },
+  "keywords": "J5MOC, LEGO Johnny 5, LEGO Johnny Five, Johnny 5 LEGO, Johnny Five LEGO, Short Circuit, LEGO MOC, LEGO robot, 3D viewer"
+}
+</script>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,Helvetica,sans-serif}
+
+html,body{
+    width:100%;
+    min-height:100%;
+    background:rgb(176,176,176);
+}
+
+body{overflow-x:hidden}
+
+.stage{
+    position:relative;
+    width:min(100vw,56.25vh);
+    min-height:100vh;
+    margin:0 auto;
+    padding-bottom:50px;
+
+    background-color:rgb(176,176,176);
+    background-image:url("./background002.png");
+    background-size:100% auto;
+    background-repeat:no-repeat;
+    background-position:top center;
+}
+
+.links{
+    width:82%;
+    margin:0 auto;
+    padding-top:350px;
+
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+}
+
+.viewer-box{
+    width:100%;
+    aspect-ratio:1/1;
+    border-radius:22px;
+    overflow:hidden;
+    background:rgba(40,40,40,.35);
+    border:1px solid rgba(255,255,255,.20);
+    backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
+    box-shadow:0 12px 32px rgba(0,0,0,.22), inset 0 1px 0 rgba(255,255,255,.12);
+}
+
+.viewer-box iframe{
+    width:100%;
+    height:100%;
+    border:none;
+    display:block;
+}
+
+.seo-text{
+    position:absolute;
+    left:-9999px;
+    width:1px;
+    height:1px;
+    overflow:hidden;
+}
+
+.icon-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:18px;
+}
+
+.icon-link{
+    aspect-ratio:1/1;
+    border-radius:22px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:rgba(40,40,40,.35);
+    border:1px solid rgba(255,255,255,.20);
+    backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
+    box-shadow:0 12px 32px rgba(0,0,0,.22), inset 0 1px 0 rgba(255,255,255,.12);
+    transition:.25s;
+}
+
+.icon-link:hover,.link:hover{
+    transform:translateY(-3px);
+    background:rgba(30,30,30,.55);
+    border-color:rgba(255,255,255,.35);
+}
+
+.icon{
+    width:62%;
+    height:62%;
+    border-radius:18px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
+}
+
+.icon svg{width:78%;height:78%}
+
+.instagram{background:linear-gradient(135deg,#feda75,#fa7e1e,#d62976,#962fbf,#4f5bd5)}
+.tiktok{background:#000}
+.reddit{background:#ff4500}
+.youtube{background:#fff}
+
+.link{
+    display:grid;
+    grid-template-columns:72px 1fr 28px;
+    align-items:center;
+    min-height:112px;
+    padding:16px 22px;
+    text-decoration:none;
+    color:white;
+    border-radius:22px;
+    background:rgba(40,40,40,.35);
+    border:1px solid rgba(255,255,255,.20);
+    backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
+    box-shadow:0 12px 32px rgba(0,0,0,.22), inset 0 1px 0 rgba(255,255,255,.12);
+    transition:.25s;
+}
+
+.thumb{
+    width:64px;
+    height:64px;
+    border-radius:16px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
+    background:rgba(255,255,255,.88);
+}
+
+.thumb svg{width:44px;height:44px}
+
+.label{
+    text-align:center;
+    font-size:28px;
+    font-weight:800;
+    color:white;
+    text-shadow:0 2px 10px rgba(0,0,0,.28);
+}
+
+.menu{
+    color:rgba(255,255,255,.68);
+    font-size:30px;
+    text-align:right;
+}
+
+.legal-footer{
+    margin:24px auto 0 auto;
+    display:flex;
+    justify-content:center;
+    gap:14px;
+    flex-wrap:wrap;
+    color:rgba(255,255,255,.75);
+    font-size:14px;
+}
+
+.legal-footer span{
+    width:100%;
+    text-align:center;
+    color:rgba(255,255,255,.66);
+}
+
+.legal-footer button{
+    background:transparent;
+    border:none;
+    color:rgba(255,255,255,.86);
+    cursor:pointer;
+    text-decoration:underline;
+    font-size:14px;
+}
+
+.modal{
+    display:none;
+    position:fixed;
+    inset:0;
+    z-index:9999;
+    align-items:center;
+    justify-content:center;
+    padding:24px;
+    background:rgba(0,0,0,.35);
+    backdrop-filter:blur(14px);
+    -webkit-backdrop-filter:blur(14px);
+}
+
+.modal.active{display:flex}
+
+.modal-box{
+    width:min(92vw,720px);
+    max-height:82vh;
+    overflow:auto;
+    padding:28px;
+    border-radius:24px;
+    background:rgba(30,30,30,.72);
+    border:1px solid rgba(255,255,255,.22);
+    color:white;
+    box-shadow:0 24px 80px rgba(0,0,0,.45);
+}
+
+.modal-box h2{margin-bottom:18px;font-size:26px}
+.modal-box h3{margin-top:22px;margin-bottom:8px;font-size:18px}
+.modal-box p{margin-bottom:12px;line-height:1.55;color:rgba(255,255,255,.86)}
+.modal-box a{color:white}
+
+.close-modal{
+    margin-top:20px;
+    width:100%;
+    padding:14px;
+    border-radius:16px;
+    border:1px solid rgba(255,255,255,.25);
+    background:rgba(255,255,255,.16);
+    color:white;
+    font-weight:700;
+    cursor:pointer;
+}
+
+@media(max-width:768px){
+    .stage{
+        width:100vw;
+        padding-bottom:36px;
+    }
+
+    .links{
+        width:88%;
+        padding-top:270px;
+        gap:12px;
+    }
+
+    .viewer-box{
+        width:86%;
+        margin:0 auto;
+        border-radius:20px;
+    }
+
+    .icon-grid{
+        width:86%;
+        margin:0 auto;
+        gap:10px;
+    }
+
+    .icon-link{border-radius:18px}
+
+    .link{
+        width:86%;
+        margin:0 auto;
+        grid-template-columns:54px 1fr 20px;
+        min-height:82px;
+        padding:12px 16px;
+        border-radius:18px;
+    }
+
+    .thumb{
+        width:48px;
+        height:48px;
+        border-radius:13px;
+    }
+
+    .thumb svg{width:34px;height:34px}
+    .label{font-size:20px}
+    .menu{font-size:22px}
+
+    .legal-footer{
+        margin-top:18px;
+        font-size:12px;
+        gap:10px;
+    }
+
+    .legal-footer button{font-size:12px}
+}
+</style>
+</head>
+
+<body>
+
+<div class="stage">
+<div class="links">
+
+    <section class="seo-text">
+        <h1>J5MOC - LEGO Johnny 5 MOC</h1>
+        <p>
+            J5MOC is a fan-made LEGO Johnny 5 MOC inspired by the movie Short Circuit.
+            This website includes the interactive 3D viewer for the LEGO Johnny Five model,
+            project updates, community links, building information and related content.
+        </p>
+        <p>
+            Search terms: J5MOC, LEGO Johnny 5, LEGO Johnny Five, Johnny 5 LEGO,
+            Johnny Five LEGO, LEGO Short Circuit, LEGO robot MOC, Johnny 5 MOC,
+            LEGO 3D viewer, interactive LEGO viewer.
+        </p>
+    </section>
+
+    <div class="viewer-box">
+        <iframe title="J5MOC interactive LEGO Johnny 5 3D viewer" src="https://charavision.github.io/J5MOC-viewer/" loading="lazy" allowfullscreen></iframe>
+    </div>
+
+    <div class="icon-grid">
+        <a class="icon-link" aria-label="J5MOC on Instagram" href="https://www.instagram.com/johnny5moc" target="_blank" rel="noopener">
+            <div class="icon instagram">
+                <svg viewBox="0 0 24 24" fill="none"><rect x="4" y="4" width="16" height="16" rx="5" stroke="white" stroke-width="2"/><circle cx="12" cy="12" r="4" stroke="white" stroke-width="2"/><circle cx="17" cy="7" r="1.2" fill="white"/></svg>
+            </div>
+        </a>
+
+        <a class="icon-link" aria-label="J5MOC on TikTok" href="https://www.tiktok.com/@0charavision0" target="_blank" rel="noopener">
+            <div class="icon tiktok">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M14 3v11.2a4.2 4.2 0 1 1-3.2-4.1M15.4 3c.6 3 2.3 4.8 5.1 5.2" stroke="white" stroke-width="2.4" stroke-linecap="round"/></svg>
+            </div>
+        </a>
+
+        <a class="icon-link" aria-label="J5MOC Reddit community" href="https://www.reddit.com/r/J5MOC/" target="_blank" rel="noopener">
+            <div class="icon reddit">
+                <svg viewBox="0 0 24 24" fill="white"><circle cx="12" cy="13" r="7"/><circle cx="8.8" cy="12.5" r="1.1" fill="#ff4500"/><circle cx="15.2" cy="12.5" r="1.1" fill="#ff4500"/><path d="M9.2 15.5c1.5 1.1 4.1 1.1 5.6 0" stroke="#ff4500" stroke-width="1.2" fill="none" stroke-linecap="round"/></svg>
+            </div>
+        </a>
+
+        <a class="icon-link" aria-label="Charavision YouTube channel" href="https://www.youtube.com/@charavision" target="_blank" rel="noopener">
+            <div class="icon youtube">
+                <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="6" width="18" height="12" rx="3" fill="#ff0000"/><path d="M10 9.5v5l5-2.5-5-2.5z" fill="white"/></svg>
+            </div>
+        </a>
+    </div>
+
+    <a class="link" href="https://www.flickr.com/photos/204587613@N07" target="_blank" rel="noopener">
+        <div class="thumb"><svg viewBox="0 0 24 24"><circle cx="8" cy="12" r="4" fill="#0063dc"/><circle cx="16" cy="12" r="4" fill="#ff0084"/></svg></div>
+        <div class="label">Flickr</div><div class="menu">⋮</div>
+    </a>
+
+    <a class="link" href="https://www.1000steine.de/de/gemeinschaft/forum/?entry=1&id=486383#id486383" target="_blank" rel="noopener">
+        <div class="thumb"><svg viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="10" rx="2" fill="#0099cc"/><rect x="5" y="9" width="14" height="6" rx="1" fill="#ffe066"/></svg></div>
+        <div class="label">1000Steine</div><div class="menu">⋮</div>
+    </a>
+
+    <a class="link" href="https://www.doctor-brick.de/threads/j5moc-johnny-5-lego-moc.30963/" target="_blank" rel="noopener">
+        <div class="thumb"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="white" stroke="#d33" stroke-width="1.5"/><rect x="8" y="8" width="8" height="7" rx="1.2" fill="#ff8a00"/><circle cx="9.5" cy="11" r="1" fill="#111"/><circle cx="14.5" cy="11" r="1" fill="#111"/></svg></div>
+        <div class="label">DOCTOR BRICK</div><div class="menu">⋮</div>
+    </a>
+
+    <a class="link" href="https://www.eurobricks.com/forum/forums/topic/213205-moc-j5moc-lego-johnny-5-from-short-circuit/" target="_blank" rel="noopener">
+        <div class="thumb"><svg viewBox="0 0 24 24"><rect x="6" y="7" width="9" height="9" rx="1.2" fill="#5f47ff"/><path d="M4 17l5-3 4 4 7-7" stroke="#ffe500" stroke-width="2" fill="none" stroke-linecap="round"/></svg></div>
+        <div class="label">Eurobricks</div><div class="menu">⋮</div>
+    </a>
+
+    <footer class="legal-footer">
+        <span>© 2026 Sebastian Chara / Charavision</span>
+        <button onclick="openModal('impressumModal')">Impressum</button>
+        <button onclick="openModal('privacyModal')">Datenschutz</button>
+        <button onclick="openModal('copyrightModal')">Copyright</button>
+    </footer>
+
+</div>
+</div>
+
+<div id="impressumModal" class="modal">
+    <div class="modal-box">
+        <h2>Impressum</h2>
+        <p>Angaben gemäß § 5 DDG</p>
+        <p>
+            Sebastian Chara<br>
+            Schwalbenstraße 57<br>
+            22305 Hamburg<br>
+            Germany
+        </p>
+        <p>E-Mail: <a href="mailto:charavisionj5@gmail.com">charavisionj5@gmail.com</a></p>
+        <p>Kleinunternehmer gemäß § 19 UStG.</p>
+        <button class="close-modal" onclick="closeModal('impressumModal')">Schließen</button>
+    </div>
+</div>
+
+<div id="privacyModal" class="modal">
+    <div class="modal-box">
+        <h2>Datenschutzhinweis</h2>
+        <p>Verantwortlicher für diese Website ist Sebastian Chara, Schwalbenstraße 57, 22305 Hamburg, Germany. Kontakt: charavisionj5@gmail.com.</p>
+        <h3>Hosting</h3>
+        <p>Diese Website wird über GitHub Pages bereitgestellt. Beim Aufruf der Website können technisch notwendige Verbindungsdaten wie IP-Adresse, Datum, Uhrzeit, Browserinformationen und aufgerufene Dateien verarbeitet werden.</p>
+        <h3>3D-Viewer</h3>
+        <p>Auf dieser Seite ist ein 3D-Viewer eingebunden. Beim Laden des Viewers können technische Ressourcen von GitHub Pages und verwendeten CDN-Diensten geladen werden.</p>
+        <h3>Externe Links</h3>
+        <p>Diese Website enthält Links zu externen Plattformen wie Instagram, TikTok, Reddit, YouTube, Flickr, 1000Steine, Doctor Brick und Eurobricks. Beim Anklicken dieser Links gelten die Datenschutzbestimmungen der jeweiligen Anbieter.</p>
+        <h3>Keine Kontaktformulare</h3>
+        <p>Diese Website verwendet kein eigenes Kontaktformular und keine eigene Nutzerregistrierung.</p>
+        <h3>Rechte betroffener Personen</h3>
+        <p>Du hast nach der DSGVO insbesondere Rechte auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung, Datenübertragbarkeit und Widerspruch.</p>
+        <button class="close-modal" onclick="closeModal('privacyModal')">Schließen</button>
+    </div>
+</div>
+
+<div id="copyrightModal" class="modal">
+    <div class="modal-box">
+        <h2>Copyright / Legal Notice</h2>
+        <p>© 2026 Sebastian Chara / Charavision. All rights reserved.</p>
+        <p>All images, renders, website design and 3D presentation materials on this website are © Sebastian Chara / Charavision unless otherwise stated.</p>
+        <p>LEGO® is a trademark of the LEGO Group, which does not sponsor, authorize or endorse this project.</p>
+        <p>J5MOC is a fan-made LEGO MOC project inspired by the character Johnny 5 from the motion picture “Short Circuit”.</p>
+        <button class="close-modal" onclick="closeModal('copyrightModal')">Schließen</button>
+    </div>
+</div>
+
+<script>
+function openModal(id){
+    document.getElementById(id).classList.add("active");
+}
+
+function closeModal(id){
+    document.getElementById(id).classList.remove("active");
+}
+
+document.addEventListener("keydown", function(e){
+    if(e.key === "Escape"){
+        document.querySelectorAll(".modal.active").forEach(function(modal){
+            modal.classList.remove("active");
+        });
+    }
+});
+
+document.querySelectorAll(".modal").forEach(function(modal){
+    modal.addEventListener("click", function(e){
+        if(e.target === modal){
+            modal.classList.remove("active");
+        }
+    });
+});
+</script>
+
+</body>
+</html>
