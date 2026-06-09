@@ -19,7 +19,7 @@ body{overflow-x:hidden}
 .stage{
     position:relative;
     width:min(100vw,56.25vh);
-    min-height:3900px;
+    min-height:2200px;
     margin:0 auto;
     background-color:rgb(176,176,176);
     background-image:url("./background002.png");
@@ -31,7 +31,7 @@ body{overflow-x:hidden}
 .links{
     position:absolute;
     left:50%;
-    top:350px;
+    top:270px;
     transform:translateX(-50%);
     width:82%;
     display:flex;
@@ -146,29 +146,29 @@ body{overflow-x:hidden}
 }
 
 .legal-footer{
-    width:88%;
-    margin:40px auto 80px auto;
-
+    width:min(88vw,520px);
+    margin:34px auto 70px auto;
     display:flex;
     justify-content:center;
-    gap:18px;
+    gap:16px;
     flex-wrap:wrap;
-
     color:rgba(255,255,255,.75);
-    font-size:15px;
+    font-size:14px;
 }
 
 .legal-footer button{
     background:transparent;
     border:none;
-    color:rgba(255,255,255,.82);
+    color:rgba(255,255,255,.86);
     cursor:pointer;
     text-decoration:underline;
-    font-size:15px;
+    font-size:14px;
 }
 
 .legal-footer span{
-    color:rgba(255,255,255,.65);
+    width:100%;
+    text-align:center;
+    color:rgba(255,255,255,.66);
 }
 
 .modal{
@@ -184,9 +184,7 @@ body{overflow-x:hidden}
     -webkit-backdrop-filter:blur(14px);
 }
 
-.modal.active{
-    display:flex;
-}
+.modal.active{display:flex}
 
 .modal-box{
     width:min(92vw,720px);
@@ -200,26 +198,10 @@ body{overflow-x:hidden}
     box-shadow:0 24px 80px rgba(0,0,0,.45);
 }
 
-.modal-box h2{
-    margin-bottom:18px;
-    font-size:26px;
-}
-
-.modal-box h3{
-    margin-top:22px;
-    margin-bottom:8px;
-    font-size:18px;
-}
-
-.modal-box p{
-    margin-bottom:12px;
-    line-height:1.55;
-    color:rgba(255,255,255,.86);
-}
-
-.modal-box a{
-    color:white;
-}
+.modal-box h2{margin-bottom:18px;font-size:26px}
+.modal-box h3{margin-top:22px;margin-bottom:8px;font-size:18px}
+.modal-box p{margin-bottom:12px;line-height:1.55;color:rgba(255,255,255,.86)}
+.modal-box a{color:white}
 
 .close-modal{
     margin-top:20px;
@@ -234,8 +216,16 @@ body{overflow-x:hidden}
 }
 
 @media(max-width:768px){
-    .stage{width:100vw;min-height:3600px}
-    .links{top:270px;width:88%;gap:12px}
+    .stage{
+        width:100vw;
+        min-height:1720px;
+    }
+
+    .links{
+        top:250px;
+        width:88%;
+        gap:12px;
+    }
 
     .viewer-box{
         width:86%;
@@ -267,19 +257,16 @@ body{overflow-x:hidden}
     }
 
     .thumb svg{width:34px;height:34px}
-
     .label{font-size:20px}
     .menu{font-size:22px}
 
     .legal-footer{
-        bottom:48px;
+        margin:24px auto 50px auto;
         font-size:12px;
         gap:10px;
     }
 
-    .legal-footer button{
-        font-size:12px;
-    }
+    .legal-footer button{font-size:12px}
 }
 </style>
 </head>
@@ -340,6 +327,7 @@ body{overflow-x:hidden}
     </a>
 
 </div>
+</div>
 
 <footer class="legal-footer">
     <span>© 2026 Sebastian Chara / Charavision</span>
@@ -348,27 +336,18 @@ body{overflow-x:hidden}
     <button onclick="openModal('copyrightModal')">Copyright</button>
 </footer>
 
-</div>
-
 <div id="impressumModal" class="modal">
     <div class="modal-box">
         <h2>Impressum</h2>
-
         <p>Angaben gemäß § 5 DDG</p>
-
         <p>
             Sebastian Chara<br>
             Schwalbenstraße 57<br>
             22305 Hamburg<br>
             Germany
         </p>
-
-        <p>
-            E-Mail: <a href="mailto:charavisionj5@gmail.com">charavisionj5@gmail.com</a>
-        </p>
-
+        <p>E-Mail: <a href="mailto:charavisionj5@gmail.com">charavisionj5@gmail.com</a></p>
         <p>Kleinunternehmer gemäß § 19 UStG.</p>
-
         <button class="close-modal" onclick="closeModal('impressumModal')">Schließen</button>
     </div>
 </div>
@@ -404,8 +383,7 @@ body{overflow-x:hidden}
 
         <h3>Keine Kontaktformulare</h3>
         <p>
-            Diese Website verwendet kein eigenes Kontaktformular und keine eigene
-            Nutzerregistrierung.
+            Diese Website verwendet kein eigenes Kontaktformular und keine eigene Nutzerregistrierung.
         </p>
 
         <h3>Rechte betroffener Personen</h3>
@@ -442,12 +420,7 @@ body{overflow-x:hidden}
         <button class="close-modal" onclick="closeModal('copyrightModal')">Schließen</button>
     </div>
 </div>
-<footer class="legal-footer">
-    <span>© 2026 Sebastian Chara / Charavision</span>
-    <button onclick="openModal('impressumModal')">Impressum</button>
-    <button onclick="openModal('privacyModal')">Datenschutz</button>
-    <button onclick="openModal('copyrightModal')">Copyright</button>
-</footer>
+
 <script>
 function openModal(id){
     document.getElementById(id).classList.add("active");
